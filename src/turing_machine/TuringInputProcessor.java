@@ -19,7 +19,7 @@ public class TuringInputProcessor {
     public String getValidMultiplicationInput() {
         String userInput;
         do {
-            System.out.println("Bitte geben Sie eine Multiplikation im Format 'a x b' ein:");
+            System.out.println("Bitte geben Sie eine Multiplikation im Format 'axb' ein:");
             userInput = scanner.nextLine();
         } while (!isValidInput(userInput));
 

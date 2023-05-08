@@ -306,7 +306,7 @@ public class TuringMachine {
         NUMBER('0'),
         REPLACE_ZERO('X'),
         REPLACE_ONE('Y'),
-        BLANK('B'),
+        BLANK('_'),
         CALCULATION('C'),
         LEFT('L'),
         RIGHT('R');
