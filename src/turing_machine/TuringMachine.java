@@ -116,12 +116,6 @@ public class TuringMachine {
         System.out.println(transition);
         System.out.println(tape.replace(" ", ""));
         printMachineState();
-        try {
-            sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        ;
     }
 
     /**
