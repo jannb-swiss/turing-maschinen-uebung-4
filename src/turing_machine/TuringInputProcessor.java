@@ -32,6 +32,12 @@ public class TuringInputProcessor {
         tape.append(BLANK.getSymbol());
         return tape.toString();
     }
+    public String getGeneralInput(){
+        String userInput;
+        System.out.println("Bitte geben sie den initialen Bandinhalt ein");
+        userInput = scanner.nextLine();
+        return BLANK.getSymbol() + userInput + BLANK.getSymbol();
+    }
 
     /**
      * Überprüft, ob die Eingabe für eine Multiplikation im richtigen Format vorliegt und gültig ist.

@@ -8,7 +8,7 @@ package turing_machine;
  */
 public class DataState {
     private final String secondState;
-    private final TuringMachine.Symbol symbol;
+    private final TuringMachine.Symbol symbol; //Direction
     private final char write;
 
     public DataState(String secondState, TuringMachine.Symbol symbol, char write) {

@@ -24,6 +24,7 @@ public class TuringMachine {
     private boolean printSteps;
     private TuringInputProcessor turingInputProcessor = new TuringInputProcessor();
     private List<Transition> transitionList;
+    private boolean isMultiplication = true;
 
     /**
      * Erstellt eine neue Turing-Maschine, die die Eingabe vom Benutzer
@@ -38,6 +39,15 @@ public class TuringMachine {
         parseByteCodeAndAddTransitions(path);
         run();
     }
+    public TuringMachine(String txtPath, boolean isMultiplication){
+        this.isMultiplication = isMultiplication;
+        Path path = Path.of(txtPath);
+        this.tape = isMultiplication ? turingInputProcessor.getValidMultiplicationInput() : turingInputProcessor.getGeneralInput();
+        this.printSteps = isMultiplication ? turingInputProcessor.shouldPrintStepByStep() : true;
+        transitionList = new ArrayList<>();
+        parseByteCodeAndAddTransitions(path);
+        run();
+    }
 
 
     /**
@@ -47,7 +57,7 @@ public class TuringMachine {
      */
     private void run() {
         Transition transition = new Transition();
-
+        System.out.println(transitionList);
         if (printSteps) {
             while ((transition = findApplicableTransition()) != null) {
                 counter++;
@@ -79,11 +89,12 @@ public class TuringMachine {
                 state = dataState.getSecondState();
             }
         }
-
-        int result = calculateOutput();
-        System.out.println("");
-        System.out.println("Resultat: " + result);
-        System.out.println("");
+        if(isMultiplication){
+            int result = calculateOutput();
+            System.out.println("");
+            System.out.println("Resultat: " + result);
+            System.out.println("");
+        }
 
         this.pointerLocation = 1;
 
@@ -174,7 +185,6 @@ public class TuringMachine {
      */
     public void parseByteCodeAndAddTransitions(Path codePath) {
         String[] transitions = convertByteCodeToTransitions(codePath);
-
         for (String transition : transitions) {
             String[] fragments = transition.split(SPLIT.getSymbolAsString());
             String fromState = "q" + (fragments[0].length() - 1);

@@ -11,7 +11,7 @@ import turing_machine.TuringMachine.Symbol;
  */
 public class Transition {
 
-    private Symbol symbol;
+    private Symbol direction;
     private String firstState;
     private String secondState;
     private char write;
@@ -28,7 +28,7 @@ public class Transition {
         this.read = '0';
         this.secondState = "q1";
         this.write = '1';
-        this.symbol = RIGHT;
+        this.direction = RIGHT;
     }
 
     /**
@@ -38,14 +38,14 @@ public class Transition {
      * @param read        das gelesene Zeichen der Übergangsfunktion
      * @param secondState der zweite Zustand der Übergangsfunktion
      * @param write       das zu schreibende Zeichen der Übergangsfunktion
-     * @param symbol      die Bewegungsrichtung des Lesekopfs der Übergangsfunktion
+     * @param direction      die Bewegungsrichtung des Lesekopfs der Übergangsfunktion
      */
-    public Transition(String firstState, char read, String secondState, char write, Symbol symbol) {
+    public Transition(String firstState, char read, String secondState, char write, Symbol direction) {
         this.firstState = firstState;
         this.secondState = secondState;
         this.read = read;
         this.write = write;
-        this.symbol = symbol;
+        this.direction = direction;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Transition {
      * @return der neue Zustand und die Aktion, die von dieser Übergangsfunktion ausgeführt werden soll
      */
     public DataState apply() {
-        return new DataState(secondState, symbol, write);
+        return new DataState(secondState, direction, write);
     }
 
     /**
@@ -66,7 +66,7 @@ public class Transition {
      */
     @Override
     public String toString() {
-        return "(" + firstState + " ; " + read + ") = (" + secondState + " ; " + write + " ; " + symbol.getSymbol() + ")";
+        return "(" + firstState + " ; " + read + ") = (" + secondState + " ; " + write + " ; " + direction.getSymbol() + ")";
     }
 
     public String getFirstState() {
