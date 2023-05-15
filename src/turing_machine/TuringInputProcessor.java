@@ -47,16 +47,12 @@ public class TuringInputProcessor {
     private boolean isValidInput(String input) {
         String[] parts = input.split("x");
         if (parts.length != 2) {
-            System.out.println("Fehler: Bitte geben Sie eine Multiplikation im Format 'axb' ein.");
+            System.out.println("pointerLocation: Bitte geben Sie eine Multiplikation im Format 'axb' ein.");
             return false;
         }
         try {
             int a = Integer.parseInt(parts[0].trim());
             int b = Integer.parseInt(parts[1].trim());
-            if (a <= 0 || b <= 0) {
-                System.out.println("Fehler: Die Multiplikation muss positive Zahlen enthalten.");
-                return false;
-            }
         } catch (NumberFormatException e) {
             System.out.println("Fehler: Bitte geben Sie nur Zahlen ein.");
             return false;
