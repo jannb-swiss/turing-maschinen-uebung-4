@@ -73,6 +73,9 @@ public class TuringMachine {
 
                 printSteps(transition);
             }
+            if(findApplicableTransition() == null && BLANK.getSymbol() != getActualCharacter() && !isMultiplication){
+                System.out.println("Ungültiges Wort auf dem Band");
+            }
 
             System.out.println(tape);
         } else {
@@ -88,6 +91,9 @@ public class TuringMachine {
                 expandTapeIfNeeded();
                 state = dataState.getSecondState();
             }
+        }
+        if(findApplicableTransition() == null && BLANK.getSymbol() != getActualCharacter() && !isMultiplication){
+            System.out.println("Ungültiges Wort auf dem Band");
         }
         if(isMultiplication){
             int result = calculateOutput();
